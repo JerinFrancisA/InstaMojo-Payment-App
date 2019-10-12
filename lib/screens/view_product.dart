@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:folk_payments/screens/folk_details.dart';
 import 'package:folk_payments/screens/products.dart';
 import 'package:folk_payments/utilities/constants.dart';
 import 'package:folk_payments/screens/instamojo.dart';
@@ -19,7 +20,7 @@ class _ViewState extends State<View> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'VIEW PRUDUCT',
+            'VIEW PRODUCT',
           ),
           centerTitle: true,
         ),
@@ -79,7 +80,7 @@ class _ViewState extends State<View> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InstaMojo(
+                    builder: (context) => Details(
                       index: widget.index,
                     ),
                   ),
