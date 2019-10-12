@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:folk_payments/screens/login_screen.dart';
 import 'package:folk_payments/screens/categories.dart';
 import 'package:folk_payments/screens/instamojo.dart';
+import 'package:folk_payments/screens/products.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (context) => LoginScreen(),
         Categories.routeName: (context) => Categories(),
         InstaMojo.routeName: (context) => InstaMojo(),
+        Products.routeName: (context) => Products(),
       },
       initialRoute: LoginScreen.routeName,
     );

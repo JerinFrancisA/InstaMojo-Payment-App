@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class InstaMojo extends StatefulWidget {
   static const routeName = 'InstaMojo';
@@ -50,11 +51,11 @@ class _InstaMojoState extends State<InstaMojo> {
       flutterWebviewPlugin.close();
 //Let's open the url in webview.
       flutterWebviewPlugin.launch(selectedUrl,
-          rect: new Rect.fromLTRB(
-              5.0,
-              MediaQuery.of(context).size.height / 7,
-              MediaQuery.of(context).size.width - 5.0,
-              7 * MediaQuery.of(context).size.height / 7),
+//          rect: new Rect.fromLTRB(
+//              5.0,
+//              MediaQuery.of(context).size.height / 7,
+//              MediaQuery.of(context).size.width - 5.0,
+//              7 * MediaQuery.of(context).size.height / 7),
           userAgent: kAndroidUserAgent);
     } else {
       print(resp.body);
@@ -106,8 +107,10 @@ class _InstaMojoState extends State<InstaMojo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-
+        appBar: AppBar(
+          title: Text('Complete Payment'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
       ),
     );
