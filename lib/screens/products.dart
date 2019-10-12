@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:folk_payments/screens/instamojo.dart';
+import 'package:folk_payments/screens/view_product.dart';
 import 'package:folk_payments/utilities/constants.dart';
 import 'package:folk_payments/utilities/items.dart';
 import 'package:folk_payments/custom_widgets/category.dart';
@@ -102,7 +102,7 @@ class Products extends StatelessWidget {
               (i) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> InstaMojo(index: i)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> View(index: i)));
                   },
                   child: GridTile(
                     child: Column(
