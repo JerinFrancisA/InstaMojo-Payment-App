@@ -22,30 +22,38 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          children: [
-            Column(
-              children: <Widget>[
-                un,
-                pw,
-                Button(
-                  text: 'LOGIN',
-                  onPressed: () async {
-                    try {
-                      user = await auth.signInWithEmailAndPassword(email: un.input, password: pw.input);
-                      if(user!=null) {
-                        Navigator.of(context).pop();
-                        Navigator.pushNamed(context, Categories.routeName);
+        appBar: AppBar(
+          title: Text('Login'),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: ListView(
+            children: [
+              Column(
+                children: <Widget>[
+                  un,
+                  pw,
+                  Button(
+                    text: 'LOGIN',
+                    onPressed: () async {
+                      try {
+                        user = await auth.signInWithEmailAndPassword(
+                            email: un.input, password: pw.input);
+                        if (user != null) {
+                          Navigator.of(context).pop();
+                          Navigator.pushNamed(context, Categories.routeName);
+                        }
+                      } catch (e) {
+                        print(e);
                       }
-                    } catch(e) {
-                      print(e);
-                    }
-                  },
-                ),
-              ],
-            ),
-          ],
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
