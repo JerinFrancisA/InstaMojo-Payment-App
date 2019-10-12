@@ -90,7 +90,7 @@ class _ViewState extends State<View> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: kButtonColor.withOpacity(0.9),
+                    color: Colors.orange,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(

@@ -13,9 +13,6 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  var name = InputBox(text: 'name');
-  var email = InputBox(text: 'email');
-  var phone = InputBox(text: 'phone');
 
   @override
   Widget build(BuildContext context) {

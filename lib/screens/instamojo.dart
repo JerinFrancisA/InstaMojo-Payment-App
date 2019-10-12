@@ -8,8 +8,11 @@ bool closeable = false;
 
 class InstaMojo extends StatefulWidget {
   static const routeName = 'InstaMojo';
-  InstaMojo({@required this.index});
+  InstaMojo({@required this.index, @required this.name, @required this.email, @required this.phone});
   final index;
+  final name;
+  final email;
+  final phone;
 
   @override
   _InstaMojoState createState() => _InstaMojoState();
@@ -25,14 +28,13 @@ class _InstaMojoState extends State<InstaMojo> {
     Map<String, String> body = {
       "amount": categoryItem[widget.index]['item_price'], //amount to be paid
       "purpose": "Advertising",
-      "buyer_name": 'jerin',
-      "email": 'jerinfrancis77@gmail.com',
-      "phone": '7975235842',
+      "buyer_name": widget.name,
+      "email": widget.email,
+      "phone": widget.phone,
       "allow_repeated_payments": "true",
       "send_email": "false",
       "send_sms": "false",
       "redirect_url": "http://www.example.com/redirect/",
-      //Where to redirect after a successful payment.
       "webhook": "http://www.example.com/webhook/",
     };
 //First we have to create a Payment_Request.
