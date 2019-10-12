@@ -38,7 +38,7 @@ class _DetailsState extends State<Details> {
             Button(
               text: 'SUBMIT AND PAY',
               onPressed: () async {
-                if (!discount.input) {
+                if (discount.input != null) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -50,6 +50,13 @@ class _DetailsState extends State<Details> {
                       ),
                     ),
                   );
+                }
+                else {
+                  print("JmERIN");
+                  List docs;
+                  QuerySnapshot querySnapshot = await Firestore.instance.collection("collection").getDocuments();
+                  docs = querySnapshot.documents;
+                  print(docs[0]);
                 }
               },
             ),
