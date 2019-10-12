@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:folk_payments/custom_widgets/input_box.dart';
-import 'package:folk_payments/custom_widgets/';
+import 'package:folk_payments/custom_widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -23,7 +23,10 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             un,
             pw,
-            Bu
+            Button(
+              text: 'LOGIN',
+              onPressed: () {},
+            ),
           ],
         ),
       ),
