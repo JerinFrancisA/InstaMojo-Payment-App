@@ -8,8 +8,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Folk Payments',
-      theme: ThemeData.light(),
+      theme: ThemeData.light().copyWith(
+        appBarTheme: AppBarTheme(
+          color: Colors.black,
+        ),
+      ),
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),
       },
