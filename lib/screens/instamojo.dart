@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:folk_payments/screens/products.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
+bool closeable = false;
 
 class InstaMojo extends StatefulWidget {
   static const routeName = 'InstaMojo';
+  InstaMojo({@required this.index});
+  final index;
 
   @override
   _InstaMojoState createState() => _InstaMojoState();
@@ -20,7 +23,7 @@ class _InstaMojoState extends State<InstaMojo> {
 
   Future createRequest() async {
     Map<String, String> body = {
-      "amount": "1600", //amount to be paid
+      "amount": categoryItem[widget.index]['item_price'], //amount to be paid
       "purpose": "Advertising",
       "buyer_name": 'jerin',
       "email": 'jerinfrancis77@gmail.com',
@@ -51,11 +54,11 @@ class _InstaMojoState extends State<InstaMojo> {
       flutterWebviewPlugin.close();
 //Let's open the url in webview.
       flutterWebviewPlugin.launch(selectedUrl,
-//          rect: new Rect.fromLTRB(
-//              5.0,
-//              MediaQuery.of(context).size.height / 7,
-//              MediaQuery.of(context).size.width - 5.0,
-//              7 * MediaQuery.of(context).size.height / 7),
+          rect: new Rect.fromLTRB(
+              5.0,
+              MediaQuery.of(context).size.height / 7,
+              MediaQuery.of(context).size.width - 5.0,
+              7 * MediaQuery.of(context).size.height / 7),
           userAgent: kAndroidUserAgent);
     } else {
       print(resp.body);
@@ -107,12 +110,20 @@ class _InstaMojoState extends State<InstaMojo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Complete Payment'),
-          centerTitle: true,
-          automaticallyImplyLeading: false,
+      appBar: AppBar(
+        title: Text('FOLK PAYMENTS'),
+        actions: <Widget>[
+          IconButton(
+            icon:Icon(Icons.backspace),
+            onPressed: ()=>{
+            flutterWebviewPlugin.close()
+            },
+          )
+
+        ],
         ),
       ),
+
     );
   }
 }

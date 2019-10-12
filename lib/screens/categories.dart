@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:folk_payments/screens/products.dart';
 import 'package:folk_payments/custom_widgets/category.dart';
 import 'package:folk_payments/utilities/constants.dart';
+import 'package:folk_payments/custom_widgets/input_box.dart';
 
 class Categories extends StatefulWidget {
   static const routeName = 'Categories';
@@ -12,6 +13,9 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  var name = InputBox(text: 'name');
+  var email = InputBox(text: 'email');
+  var phone = InputBox(text: 'phone');
 
   @override
   Widget build(BuildContext context) {
@@ -66,26 +70,36 @@ class _CategoriesState extends State<Categories> {
               ),
               Category(
                 catName: 'Category1',
-                onTap:()=> Navigator.pushNamed(context, Products.routeName),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Products(cat: 1))),
               ),
               Category(
                 catName: 'Category2',
-                onTap: ()=>Navigator.pushNamed(context, Products.routeName),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Products(cat: 2))),
               ),
               Category(
                 catName: 'Category3',
-                onTap: () =>Navigator.pushNamed(context, Products.routeName),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Products(cat: 3))),
               ),
               Category(
                 catName: 'Category4',
-                onTap:()=>Navigator.pushNamed(context, Products.routeName),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Products(cat: 4))),
               ),
               Category(
                 catName: 'Category5',
-                onTap:()=> Navigator.pushNamed(context, Products.routeName),
-
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Products(cat: 5))),
               ),
             ],
+          ),
+        ),
+        body: Center(
+          child: Text(
+            'SELECT CATEGORY',
+            style: kInputBoxInputTextStyle,
           ),
         ),
       ),
