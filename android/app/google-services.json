@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "256447127284",
+    "firebase_url": "https://folkpayments.firebaseio.com",
+    "project_id": "folkpayments",
+    "storage_bucket": "folkpayments.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256447127284:android:a609b1b5bc109739e548a1",
+        "android_client_info": {
+          "package_name": "com.fawcis.folk_payments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256447127284-264nirqltg9f7s8lqn63nhvs6evn8ru8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAG-ru6VLv175ZDyqdct10cCr5I3X_yOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256447127284-264nirqltg9f7s8lqn63nhvs6evn8ru8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
