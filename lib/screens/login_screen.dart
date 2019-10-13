@@ -12,8 +12,9 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+var un = InputBox(text: 'Folk ID');
+
 class _LoginScreenState extends State<LoginScreen> {
-  var un = InputBox(text: 'Folk ID');
   var pw = InputBox(text: 'Folk Password');
   final auth = FirebaseAuth.instance;
   AuthResult user;

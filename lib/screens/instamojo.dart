@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:folk_payments/screens/products.dart';
-
+import 'package:folk_payments/screens/login_screen.dart';
+import 'package:sms/sms.dart';
+import 'package:folk_payments/screens/folk_details.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-bool closeable = false;
+
+
 
 class InstaMojo extends StatefulWidget {
   static const routeName = 'InstaMojo';
-  InstaMojo({@required this.index, @required this.name, @required this.email, @required this.phone});
+
+  InstaMojo({@required this.index, @required this.name, @required this.phone});
+
   final index;
   final name;
-  final email;
   final phone;
 
   @override
@@ -25,17 +29,18 @@ class _InstaMojoState extends State<InstaMojo> {
       "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36";
 
   Future createRequest() async {
+    print('U N N N N N ' + un.input ?? 'null');
     Map<String, String> body = {
       "amount": categoryItem[widget.index]['item_price'], //amount to be paid
       "purpose": "Advertising",
       "buyer_name": widget.name,
-      "email": widget.email,
+      "email": un.input,
       "phone": widget.phone,
       "allow_repeated_payments": "true",
       "send_email": "false",
-      "send_sms": "false",
-      "redirect_url": "http://www.example.com/redirect/",
-      "webhook": "http://www.example.com/webhook/",
+      "send_sms": "true",
+      "redirect_url": "https://github.com",
+      "webhook": "https://github.com",
     };
 //First we have to create a Payment_Request.
 //then we'll take the response of our request.
@@ -66,10 +71,20 @@ class _InstaMojoState extends State<InstaMojo> {
       print(resp.body);
     }
   }
+  Future<void> sendOtp() async {
+    print('in here : '+'+91'+myph.phno);
+    SmsSender sender = new SmsSender();
+    String address = '+91'+myph.phno;
+    String message = categoryItem[widget.index]['item_name']+
+            ':' + categoryItem[widget.index]['item_price'];
+
+    sender.sendSms(new SmsMessage(address, message));
+  }
 
   @override
   void initState() {
     super.initState();
+    print('sdsadasds');
     createRequest(); //creating the HTTP request
 // Add a listener on url changed
     flutterWebviewPlugin.onUrlChanged.listen((String url) {
@@ -100,6 +115,7 @@ class _InstaMojoState extends State<InstaMojo> {
     if (realResponse['success'] == true) {
       if (realResponse["payment"]['status'] == 'Credit') {
 //payment is successful.
+        print('sucesss');
       } else {
 //payment failed or pending.
       }
@@ -112,20 +128,36 @@ class _InstaMojoState extends State<InstaMojo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-      appBar: AppBar(
-        title: Text('FOLK PAYMENTS'),
-        actions: <Widget>[
-          IconButton(
-            icon:Icon(Icons.backspace),
-            onPressed: ()=>{
-            flutterWebviewPlugin.close()
-            },
-          )
-
-        ],
+        appBar: AppBar(
+          title: Text('FOLK PAYMENTS'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.backspace),
+              onPressed: () {
+                flutterWebviewPlugin.close();
+                sendOtp();
+                Navigator.of(context).pop();
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: Text('Confirmation message sent'),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text('Ok'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+            )
+          ],
         ),
       ),
-
     );
   }
 }

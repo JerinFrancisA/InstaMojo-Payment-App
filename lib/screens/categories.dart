@@ -70,21 +70,25 @@ class _CategoriesState extends State<Categories> {
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Products(cat: 1))),
               ),
+              Divider(),
               Category(
                 catName: 'Category2',
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Products(cat: 2))),
               ),
+              Divider(),
               Category(
                 catName: 'Category3',
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Products(cat: 3))),
               ),
+              Divider(),
               Category(
                 catName: 'Category4',
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Products(cat: 4))),
               ),
+              Divider(),
               Category(
                 catName: 'Category5',
                 onTap: () => Navigator.push(context,
