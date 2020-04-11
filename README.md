@@ -1,4 +1,4 @@
-# folk_payments
+# InstaMojo Payment App
 
 A new Flutter application.
 
